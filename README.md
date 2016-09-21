@@ -1,7 +1,7 @@
 # pepper-doc
 REST API Documentation Platform, built on Angular 2
 
-#####Project Keywords: `Angular 2` `TypeScript` `Webpack`
+#####Project Keywords: `Angular 2` `TypeScript` `webpack`
 
 ## Project Setup
 
@@ -9,7 +9,7 @@ REST API Documentation Platform, built on Angular 2
 
 > For OSX Users, we suggest install nodeJS through Homebrew
 
-With an nodeJS Environment installed, use this commands to run `pepper-doc`
+With an `nodeJS` environment installed, use this commands to run `pepper-doc`
 
   ```bash
     git clone https://github.com/lexmartinez/pepper-doc.git
@@ -20,4 +20,4 @@ With an nodeJS Environment installed, use this commands to run `pepper-doc`
   ```
 And voil&#224; `pepper-doc` now should be running on [http://localhost:8080/](http://localhost:8080/)
 
-#####In order to fix dependency bug `error TS2661: Cannot re-export name that is not defined in the module.` after use command `npm install` add the line `declare var Promise: PromiseConstructor;` on top of file `node_modules/angular2/src/facade/promise.d.ts`.
+#####In order to fix dependency bug `'error TS2661: Cannot re-export name that is not defined in the module.'` after use command `npm install` add the line `'declare var Promise: PromiseConstructor;'` on top of file `'node_modules/angular2/src/facade/promise.d.ts'`.
