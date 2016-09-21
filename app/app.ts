@@ -1,4 +1,5 @@
-import {bootstrap} from "angular2/platform/browser"
-import {MyHelloWorldClass} from "./components/helloworld"
+import {bootstrap}    from 'angular2/platform/browser'
+import {AppComponent} from './components/app.component'
+import {ROUTER_PROVIDERS} from 'angular2/router'
 
-bootstrap(MyHelloWorldClass);
+bootstrap(AppComponent, [ROUTER_PROVIDERS]);
