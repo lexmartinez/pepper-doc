@@ -20,4 +20,4 @@ With an `nodeJS` environment installed, use this commands to run `pepper-doc`
 
 And voil&#224; `pepper-doc` now should be running on [http://localhost:3000/](http://localhost:3000/)
 
-*project based on [mgechev/angular2-seed](https://github.com/mgechev/angular2-seed) project *
+> based on [mgechev/angular2-seed](https://github.com/mgechev/angular2-seed) project
