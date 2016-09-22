@@ -1,46 +1,66 @@
-var path = require('path');
 var webpack = require('webpack');
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var path = require('path');
 
-module.exports = {
-  devtool: 'source-map',
-  debug: true,
 
+// Webpack Config
+var webpackConfig = {
   entry: {
-    'angular2': [
-      'rxjs',
-      'reflect-metadata',
-      'angular2/core',
-      'angular2/router',
-      'angular2/http'
-    ],
-    'app': './app/app'
+    'polyfills': './src/polyfills.browser.ts',
+    'vendor':    './src/vendor.browser.ts',
+    'main':       './src/main.browser.ts',
   },
 
   output: {
-    path: __dirname + '/build/',
-    publicPath: 'build/',
-    filename: '[name].js',
-    sourceMapFilename: '[name].js.map',
+    path: './dist',
+  },
+
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.CommonsChunkPlugin({ name: ['main', 'vendor', 'polyfills'], minChunks: Infinity }),
+  ],
+
+  module: {
+    loaders: [
+      // .ts files for TypeScript
+      { test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader'] },
+      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
+      { test: /\.html$/, loader: 'raw-loader' }
+    ]
+  }
+
+};
+
+
+// Our Webpack Defaults
+var defaultConfig = {
+  devtool: 'cheap-module-source-map',
+  cache: true,
+  debug: true,
+  output: {
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
-    extensions: ['','.ts','.js','.json', '.css', '.html']
+    root: [ path.join(__dirname, 'src') ],
+    extensions: ['', '.ts', '.js']
   },
 
-  module: {
-    loaders: [
-      {
-        test: /\.ts$/,
-        loader: 'ts',
-        exclude: [ /node_modules/ ]
-      }
-    ]
+  devServer: {
+    historyApiFallback: true,
+    watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },
 
-  plugins: [
-    new CommonsChunkPlugin({ name: 'angular2', filename: 'angular2.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common',   filename: 'common.js' })
-  ]
+  node: {
+    global: 1,
+    crypto: 'empty',
+    module: 0,
+    Buffer: 0,
+    clearImmediate: 0,
+    setImmediate: 0
+  }
 };
+
+var webpackMerge = require('webpack-merge');
+module.exports = webpackMerge(defaultConfig, webpackConfig);
