@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "angular2": "2.0.0-beta.2",
+    "@angular/router":  "3.0.0-alpha.7",
     "zone.js": "^0.5.10",
     "gulp": "^3.9.0",
     "es6-shim": "^0.33.3",
