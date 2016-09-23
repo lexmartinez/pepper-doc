@@ -1,7 +1,7 @@
 # pepper-doc
-REST API Documentation Platform, built on Angular 2
+REST API Documentation Platform, built on Angular 2 & Semantic UI
 
-#####Project Keywords: `Angular 2` `TypeScript` `webpack`
+#####Project Keywords: `Angular 2` `TypeScript` `Semantic UI` `webpack`
 
 ## Project Setup
 

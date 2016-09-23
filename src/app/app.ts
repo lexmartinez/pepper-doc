@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector   : 'app',
+  selector   : 'pepper-doc',
   templateUrl: './app.html',
 })
 export class AppComponent {
