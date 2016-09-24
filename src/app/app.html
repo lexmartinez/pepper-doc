@@ -1,19 +1,22 @@
-<sm-menu title="pepper-doc" class="inverted grey" logo="/assets/images/semantic.png">
-  <!--  <a sm-item *ngFor="let item of items" [icon]="item.icon">{{item?.title}}</a>-->
-    <a sm-item [routerLink]="['/']">
-      Home
-    </a>
+<sm-menu title="&gt; pepper-doc" logo="http://icon-icons.com/icons2/677/PNG/128/hot-pepper_icon-icons.com_60827.png" >
+
+  <div class="item" style="width:30%">
+    <div class="ui icon input">
+      <input type="text" placeholder="Search...">
+      <i class="search link icon"></i>
+    </div>
+  </div>
+  <a sm-item [routerLink]="['/docs', 'angular']">
+    Explore
+  </a>
+  <sm-menu class="menu right secondary">
+    <a sm-item href="#/elements/menu"> <i class="github big icon"></i> Login With Github</a>
     <a sm-item [routerLink]="['/about']">
       About
     </a>
-    <a sm-item [routerLink]="['/github', 'angular']">
-      Github Repos
-    </a>
-    <sm-menu class="menu right secondary">
-        <a sm-item href="#/elements/menu"
-            image="http://semantic-ui.com/images/avatar/small/stevie.jpg">Elliot Fu</a>
-        <a sm-item icon="sidebar big"></a>
-    </sm-menu>
+  </sm-menu>
 </sm-menu>
 
-<router-outlet></router-outlet>
+<div>
+  <router-outlet ></router-outlet>
+</div>
