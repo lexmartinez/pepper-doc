@@ -3,7 +3,7 @@ import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class Github {
+export class CoreService {
   constructor(private http: Http) {}
 
   getOrg(org: string) {

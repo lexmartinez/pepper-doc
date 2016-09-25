@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Github } from '../shared/github';
+import { CoreService } from '../service/core.service';
 
 @Component({
   selector: 'repo-browser',
-  templateUrl: './repo-browser.html',
-  styleUrls: ['./repo-browser.css']
+  templateUrl: '../template/repo-browser.html'
 })
 export class RepoBrowser {
 
-  constructor(private router: Router, private github: Github) {
+  constructor(private router: Router, private coreService: CoreService) {
   }
 
   searchForOrg(orgName: string) {
-    this.github.getOrg(orgName)
+    this.coreService.getOrg(orgName)
       .subscribe(({name}) => {
         console.log(name);
-        this.router.navigate(['/github', orgName]);
+        this.router.navigate(['/docs', orgName]);
       });
   }
 

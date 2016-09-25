@@ -1,0 +1,10 @@
+<h3>Repo list</h3>
+<ul>
+	<li *ngFor="let app of apps | async">
+    <a [routerLink]="['/docs', app.owner.login, app.name]">
+      {{ app.name }}
+    </a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
