@@ -6,7 +6,7 @@ import {Github} from "./github/shared/github";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
-import {About} from './about/about';
+import {About} from './about/about.component';
 import {Home} from './home/home';
 import {RepoBrowser} from './github/repo-browser/repo-browser';
 import {RepoList} from './github/repo-list/repo-list';

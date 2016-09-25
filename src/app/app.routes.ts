@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {About} from './about/about';
+import {About} from './about/about.component';
 import {Home} from './home/home';
 import {RepoBrowser} from './github/repo-browser/repo-browser';
 import {RepoList} from './github/repo-list/repo-list';
