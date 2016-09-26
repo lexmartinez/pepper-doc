@@ -1,8 +1,8 @@
 <sm-menu title="&gt; pepper-doc" logo="pepper-doc.png" >
 
-  <div class="item" style="width:30%">
+  <div class="item ui fluid search" style="width:30%" [class.loading]="isLoading">
     <div class="ui icon input">
-      <input type="text" placeholder="Search...">
+      <input type="text" #search placeholder="Search..." (change)="searchProfiles(search.value)">
       <i class="search link icon"></i>
     </div>
   </div>
@@ -10,7 +10,7 @@
     Explore
   </a>
   <sm-menu class="menu right secondary">
-    <a sm-item href="https://github.com/login/oauth/authorize?client_id=a023dd0f88014d41ef6b&scope=user&redirect_uri=http://localhost:3000/#/home">
+    <a sm-item href="https://github.com/login/oauth/authorize?client_id=a023dd0f88014d41ef6b&scope=user&redirect_uri=http://localhost:3000/">
         <i class="github big icon"></i> Login With Github</a>
     <a sm-item [routerLink]="['/about']">
       About

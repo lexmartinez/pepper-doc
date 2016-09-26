@@ -1,23 +1,42 @@
-import {NgModule} from '@angular/core'
-import {RouterModule} from "@angular/router";
-import {rootRouterConfig} from "./app.routes";
-import {AppComponent} from "./app";
-import {CoreService} from "./docs/service/core.service";
-import {FormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
-import {HttpModule} from "@angular/http";
-import {AboutComponent} from './about/about.component';
-import {HomeComponent} from './home/home.component';
-import {RepoBrowser} from './docs/component/repo-browser';
-import {RepoList} from './docs/component/repo-list';
-import {RepoDetail} from './docs/component/repo-detail';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { DataService } from './services/data.service';
+import { OAuthService } from './services/oauth.service';
+
 import { NgSemanticModule } from 'ng-semantic';
 
+const routing = RouterModule.forRoot([
+    { path: '',      component: HomeComponent },
+    { path: 'about', component: AboutComponent }
+]);
+
 @NgModule({
-  declarations: [AppComponent, AboutComponent, RepoBrowser, RepoList, RepoDetail, HomeComponent],
-  imports     : [BrowserModule, NgSemanticModule , FormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
-  providers   : [CoreService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap   : [AppComponent]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    NgSemanticModule,
+    routing
+  ],
+  providers: [
+    DataService,
+    OAuthService
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+
+export class AppModule { }
