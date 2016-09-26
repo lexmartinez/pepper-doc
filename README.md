@@ -11,7 +11,7 @@ REST API Documentation Platform, built on Angular 2 & Semantic UI
 
 Use command `npm i angular-cli@1.0.0-beta.10 -g` to install Angular CLI
 
-With an `nodeJS` environment installed, use this commands to run `pepper-doc`
+With `nodeJS` environment installed, use this commands to run `pepper-doc`
 
   ```bash
     git clone https://github.com/lexmartinez/pepper-doc.git
