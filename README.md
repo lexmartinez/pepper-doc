@@ -8,9 +8,10 @@ REST API Documentation Platform, built on Angular 2 & Semantic UI
 `pepper-doc` is a typical `nodeJS` application (node 5+ & npm 3+) (with webpack module bundler) we assumed that you're familiarized with this technologies, otherwise there are useful link [nodeJS](https://nodejs.org/en/)
 
 > For OSX Users, we suggest install nodeJS through Homebrew
-> Use command 'npm i angular-cli@1.0.0-beta.10 -g' to install Angular CLI
 
-With an `nodeJS` environment installed, use this commands to run `pepper-doc`
+Use command `npm i angular-cli@1.0.0-beta.10 -g` to install Angular CLI
+
+With `nodeJS` environment installed, use this commands to run `pepper-doc`
 
   ```bash
     git clone https://github.com/lexmartinez/pepper-doc.git
