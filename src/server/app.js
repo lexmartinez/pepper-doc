@@ -52,6 +52,14 @@ db.once('open', function() {
     });
   });
 
+  // search
+  app.get('/profiles/search/:key', function(req, res) {
+    Profile.find({$or: [{name: new RegExp('.*'+req.params.key+'.*', "i")}, {login: new RegExp('.*'+req.params.key+'.*', "i")}]}, function(err, obj) {
+      if(err) return console.error(err);
+      res.json(obj);
+    })
+  });
+
   // find by id
   app.get('/profiles/:id', function(req, res) {
     Profile.findOne({_id: req.params.id}, function(err, obj) {
@@ -83,7 +91,7 @@ db.once('open', function() {
   });
 
   app.listen(app.get('port'), function() {
-    console.log('Angular 2 Full Stack listening on port '+app.get('port'));
+    console.log('pepper-doc backend listening on port '+app.get('port'));
   });
 });
 

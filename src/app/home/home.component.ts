@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   private githubCode:string;
   private githubToken:string;
   private cats = [];
+  private results = [];
   private isLoading = true;
 
   private cat = {};
