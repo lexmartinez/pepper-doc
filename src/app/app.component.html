@@ -1,43 +1,30 @@
-<sm-menu title="&gt; pepper-doc" logo="pepper-doc.png" >
+<div class="ui menu">
+  <div class="item">
+     <img src="pepper-doc.png">
+  </div>
 
-  <div class="item ui fluid search" style="width:30%" [class.loading]="isLoading">
+  <div class="search item ui fluid " style="width:30%" [class.loading]="isLoading">
     <div class="ui icon input">
-      <input type="text" #search placeholder="Search..." (change)="searchProfiles(search.value)">
+      <input type="text" #search placeholder="Search..." (keyup)="searchProfiles(search.value)">
       <i class="search link icon"></i>
     </div>
   </div>
-  <a sm-item [routerLink]="['/docs']">
+
+  <a class="item"[routerLink]="['/docs']">
     Explore
   </a>
-  <sm-menu class="menu right secondary">
+  <div class="menu right secondary">
     <a sm-item href="https://github.com/login/oauth/authorize?client_id=a023dd0f88014d41ef6b&scope=user&redirect_uri=http://localhost:3000/">
         <i class="github big icon"></i> Login With Github</a>
     <a sm-item [routerLink]="['/about']">
       About
     </a>
-  </sm-menu>
-</sm-menu>
+  </div>
+</div>
+
+
 
 <div>
-  <div class="ui link cards">
-      <div class="card" *ngFor="let user of results">
-        <div class="image" width="70%">
-          <img src="https://avatars.githubusercontent.com/u/17863319?v=3">
-        </div>
-        <div class="content">
-          <div class="header">{{user.name}}</div>
-          <div class="meta">
-            <a>@{{user.login}}</a>
-          </div>
-        </div>
-        <div class="extra content">
-          <span>
-            <i class="github alternate icon"></i>
-            http://github.com/lexmartinez
-          </span>
-        </div>
-      </div>
-    </div>
 <router-outlet>
 </router-outlet>
 </div>

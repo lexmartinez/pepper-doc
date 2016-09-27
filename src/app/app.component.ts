@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DataService } from './services/data.service';
-import { Http } from '@angular/http';
+import { Routes, RouterModule, Router } from '@angular/router';
+
 
 @Component({
   selector: 'pepper-doc',
@@ -9,18 +9,10 @@ import { Http } from '@angular/http';
 })
 export class AppComponent {
 
-  private results = [];
-  private isLoading = false;
-
-  constructor(private http: Http,  private dataService: DataService){}
+  constructor(private router:Router){}
 
   searchProfiles(search) {
-    this.isLoading = true;
-    this.dataService.searchProfiles(search).subscribe(
-      data => {this.results = JSON.parse(data._body); console.log(JSON.parse(data._body))},
-      error => console.log(error),
-      () => this.isLoading = false
-    );
+    this.router.navigate(['/search', search]);
   }
 
 }
