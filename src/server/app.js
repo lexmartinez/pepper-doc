@@ -21,12 +21,31 @@ mongoose.Promise = global.Promise;
 
 // Models
 var Profile = require('./profiles.model.js');
+var AppModel = require('./apps.model.js');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('Connected to MongoDB');
 
   // APIs
+
+  // search
+  app.get('/api/search/:key', function(req, res) {
+    Profile.find({$or: [{name: new RegExp('.*'+req.params.key+'.*', "i")},
+            {login: new RegExp('.*'+req.params.key+'.*', "i")}]}, function(err, obj) {
+      if(err) return console.error(err);
+
+      AppModel.find({$or: [{name: new RegExp('.*'+req.params.key+'.*', "i")},
+              {description: new RegExp('.*'+req.params.key+'.*', "i")}]}
+              , function(err2, obj2) {
+        if(err2) return console.error(err2);
+
+        var all = {"users":obj, "apps":obj2};
+        res.json(all);
+      })
+    })
+  });
+
   // select all
   app.get('/profiles', function(req, res) {
     Profile.find({}, function(err, docs) {
@@ -50,14 +69,6 @@ db.once('open', function() {
       if(err) return console.error(err);
       res.status(200).json(obj);
     });
-  });
-
-  // search
-  app.get('/profiles/search/:key', function(req, res) {
-    Profile.find({$or: [{name: new RegExp('.*'+req.params.key+'.*', "i")}, {login: new RegExp('.*'+req.params.key+'.*', "i")}]}, function(err, obj) {
-      if(err) return console.error(err);
-      res.json(obj);
-    })
   });
 
   // find by id

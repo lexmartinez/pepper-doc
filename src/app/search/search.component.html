@@ -1,22 +1,57 @@
 <div class="ui container middle aligned stackable" *ngIf="search">
-  <div class="ui stacked segment"  *ngFor="let user of results" [routerLink]="['/docs',user.login]">
-    <div class="image">
-      <!--  <img src="{{user.avatar_url}}">-->
+<br/>
+
+<div class="ui grid">
+  <div class="four wide column">
+
+    <div class="ui vertical menu" style="width:100%">
+      <a class="item" [class.red]="resultMode == 1" [class.active]="resultMode == 1" (click)="setResultMode(1)">
+        <i class="fa fa-users"></i>&nbsp;&nbsp;Users
+        <div class="ui left pointing label" [class.red]="resultMode == 1">{{response.users.length}}</div>
+      </a>
+      <a class="item" [class.red]="resultMode == 2" [class.active]="resultMode == 2" (click)="setResultMode(2)">
+        <i class="fa fa-coffee"></i>&nbsp;&nbsp;Apps
+        <div class="ui left pointing label" [class.red]="resultMode == 2">{{response.apps.length}}</div>
+      </a>
     </div>
-    <div class="content">
-      <a class="header">{{user.name}}</a>
-      <div class="meta">
-        <span>@{{user.login}}</span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-        <i class="github alternate icon"></i>
-        {{user.html_url}}
-      </div>
-    </div>
+
   </div>
+  <div class="twelve wide column">
+
+    <h3 class="ui header" *ngIf="resultMode == 1">We've found {{results.length}} user results</h3>
+    <h3 class="ui header" *ngIf="resultMode == 2">We've found {{results.length}} app results</h3>
+
+    <div *ngIf="resultMode == 1">
+      <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let user of results">
+        <h3 class="ui header">
+          <img src="{{user.avatar_url}}" class="ui circular image">
+          <div class="content">
+            <a class="result-name" [routerLink]="['/docs',user.login]">{{user.name}}</a>
+             <div class="sub header">@{{user.login}}<br/>
+                <i class="github alternate icon"></i>
+                {{user.html_url}}
+             </div>
+          </div>
+        </h3>
+      </div>
+    </div>
+
+      <div *ngIf="resultMode == 2">
+      <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let app of results">
+        <h3 class="ui header">
+          <img src="assets/app.png" class="ui image">
+          <div class="content">
+            <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
+             <div class="sub header">{{app.description}}<br *ngIf="app.html_url"/>
+                <i class="fa fa-flask" *ngIf="app.html_url"></i>
+                      {{app.html_url}}
+             </div>
+          </div>
+        </h3>
+      </div>
+     </div>
+  </div>
+</div>
 </div>
 <div class="ui vertical masthead aligned segment"  *ngIf="!search">
 <div class="ui container middle aligned stackable" style="padding-top:150px;">
@@ -32,6 +67,9 @@
           <i class="search link icon"></i>
         </div>
       </div>
+
+      <p style="width:100%; text-align:right">or <a class="item result-name"[routerLink]="['/docs']">
+        Explore</a> some interesting Apps</p>
 
   </div>
 </div>

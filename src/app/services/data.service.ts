@@ -12,7 +12,7 @@ export class DataService {
   constructor(private http: Http) { }
 
   searchProfiles(search){
-    return this.http.get('/profiles/search/'+search, this.options );
+    return this.http.get('/api/search/'+search, this.options );
   }
 
   getCats() {

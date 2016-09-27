@@ -10,14 +10,30 @@ import { Http } from '@angular/http';
 })
 export class SearchComponent {
 
+  private response = {users:[],apps:[]};
   private results = [];
   private isLoading = true;
   private search = undefined;
+  private resultMode = 1;
+
   constructor(private http: Http,
               private dataService: DataService, private route:ActivatedRoute, private router:Router) {}
 
     searchProfiles(search) {
       this.router.navigate(['/search', search]);
+    }
+
+    setResultMode(mode){
+      this.resultMode = mode;
+      if(this.response){
+        if(mode == 1){
+            this.results = this.response.users;
+        }
+
+        if(mode == 2){
+            this.results = this.response.apps;
+        }
+      }
     }
 
     ngOnInit() {
@@ -26,7 +42,7 @@ export class SearchComponent {
           if (this.search) {
               if(this.search!==""){
                 this.dataService.searchProfiles(this.search).subscribe(
-                  data => {this.results = JSON.parse(data._body)},
+                  data => {this.response = JSON.parse(data._body); this.setResultMode(this.resultMode);},
                   error => console.log(error),
                   () => this.isLoading = false
                 );
