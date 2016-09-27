@@ -16,6 +16,7 @@ import { NgSemanticModule } from 'ng-semantic';
 const routing = RouterModule.forRoot([
     { path: '',      component: HomeComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'search', component: SearchComponent },
     { path: 'search/:search', component: SearchComponent }
 ]);
 

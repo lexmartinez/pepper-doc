@@ -1,21 +1,38 @@
-<div class="container">
-<div class="ui stacked segment"  *ngFor="let user of results" [routerLink]="['/docs',user.login]">
-  <div class="image">
-  <img src="{{user.avatar_url}}">
+<div class="ui container middle aligned stackable" *ngIf="search">
+  <div class="ui stacked segment"  *ngFor="let user of results" [routerLink]="['/docs',user.login]">
+    <div class="image">
+      <!--  <img src="{{user.avatar_url}}">-->
+    </div>
+    <div class="content">
+      <a class="header">{{user.name}}</a>
+      <div class="meta">
+        <span>@{{user.login}}</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <i class="github alternate icon"></i>
+        {{user.html_url}}
+      </div>
+    </div>
   </div>
-  <div class="content">
-  <a class="header">{{user.name}}</a>
-  <div class="meta">
-    <span>@{{user.login}}</span>
+</div>
+<div class="ui vertical masthead aligned segment"  *ngIf="!search">
+<div class="ui container middle aligned stackable" style="padding-top:150px;">
+  <div class="ui text container">
+    <h1 class="ui header">
+     <i class="fa fa-search"></i>&nbsp;&nbsp;Search Users or Apps
+    </h1>
+
+
+      <div class="search item ui fluid " style="width:100%" [class.loading]="isLoading">
+        <div class="ui big icon input" style="width:100%" >
+          <input type="text" #search placeholder="Search..." (change)="searchProfiles(search.value)">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+
   </div>
-  <div class="description">
-    <p></p>
-  </div>
-  <div class="extra">
-    <i class="github alternate icon"></i>
-    {{user.html_url}}
-  </div>
-  </div>
-  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 </div>
 </div>
