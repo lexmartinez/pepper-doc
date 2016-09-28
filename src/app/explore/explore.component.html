@@ -1,5 +1,7 @@
 <div class="ui container middle aligned stackable">
-
+<button class="ui basic button right floated" [class.loading]="isLoading" (click)="refresh()">
+    <i class="fa fa-refresh" aria-hidden="true"></i> &nbsp;More Apps
+</button><br/>
   <div class="ui link cards" >
   <div class="card" *ngFor="let app of results">
     <div class="content">
