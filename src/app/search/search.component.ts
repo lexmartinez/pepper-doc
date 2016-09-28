@@ -12,9 +12,13 @@ export class SearchComponent {
 
   private response = {users:[],apps:[]};
   private results = [];
+  private list = [];
   private isLoading = true;
   private search = undefined;
   private resultMode = 1;
+
+  private currentPage = 1;
+  private totalPages = 1;
 
   constructor(private http: Http,
               private dataService: DataService, private route:ActivatedRoute, private router:Router) {}
@@ -23,16 +27,35 @@ export class SearchComponent {
       this.router.navigate(['/search', search]);
     }
 
+    loadPageData(){
+      this.results = [];
+      var first = (this.currentPage - 1) * 10 ;
+      var last = first + 10;
+
+      if(last>this.list.length){
+        last = this.list.length;
+      }
+
+      for(var i=first; i<last; i++){
+        this.results.push(this.list[i]);
+      }
+    }
+
     setResultMode(mode){
       this.resultMode = mode;
+      this.currentPage = 1;
+      this.list = [];
+      this.results = [];
+
       if(this.response){
-        if(mode == 1){
-            this.results = this.response.users;
+        if(mode == 1){this.list = this.response.users;}
+        if(mode == 2){this.list = this.response.apps;}
+
+        if(this.list.length > 0){
+          this.totalPages = Math.ceil((this.list.length/10));
+          this.loadPageData();
         }
 
-        if(mode == 2){
-            this.results = this.response.apps;
-        }
       }
     }
 
@@ -42,7 +65,10 @@ export class SearchComponent {
           if (this.search) {
               if(this.search!==""){
                 this.dataService.searchProfiles(this.search).subscribe(
-                  data => {this.response = JSON.parse(data._body); this.setResultMode(this.resultMode);},
+                  data => {
+                      this.response = JSON.parse(data._body);
+                      this.setResultMode(this.resultMode);
+                  },
                   error => console.log(error),
                   () => this.isLoading = false
                 );
@@ -52,6 +78,30 @@ export class SearchComponent {
               this.results = [];
             }
           });
-      }
+    }
+
+    first(){
+       this.currentPage = 1;
+       console.log(this.currentPage);
+       this.loadPageData();
+    }
+
+    previous(){
+       this.currentPage = this.currentPage - 1;
+       console.log(this.currentPage);
+       this.loadPageData();
+    }
+
+    next(){
+       this.currentPage = this.currentPage + 1;
+       console.log(this.currentPage);
+       this.loadPageData();
+    }
+
+    last(){
+       this.currentPage = this.totalPages;
+       console.log(this.currentPage);
+       this.loadPageData();
+    }
 
 }

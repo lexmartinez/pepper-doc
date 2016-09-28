@@ -18,8 +18,8 @@
   </div>
   <div class="twelve wide column">
 
-    <h3 class="ui header" *ngIf="resultMode == 1">We've found {{results.length}} user results</h3>
-    <h3 class="ui header" *ngIf="resultMode == 2">We've found {{results.length}} app results</h3>
+    <h3 class="ui header" *ngIf="resultMode == 1">We've found {{list.length}} user results</h3>
+    <h3 class="ui header" *ngIf="resultMode == 2">We've found {{list.length}} app results</h3>
 
     <div *ngIf="resultMode == 1">
       <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let user of results">
@@ -50,6 +50,27 @@
         </h3>
       </div>
      </div>
+     <br/>
+     <div class="ui center aligned container" *ngIf="list.length > 10">
+        <div class="ui pagination menu">
+          <a class="item" [class.disabled]="currentPage == 1" (click)="first()">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          </a>
+          <a class="item" [class.disabled]="currentPage == 1" (click)="previous()">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+          </a>
+          <div class="disabled item">
+             {{currentPage}} OF {{totalPages}}
+          </div>
+          <a class="item" [class.disabled]="currentPage == totalPages" (click)="next()">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </a>
+          <a class="item" [class.disabled]="currentPage == totalPages" (click)="last()">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+          </a>
+       </div>
+    </div>
+
   </div>
 </div>
 </div>
