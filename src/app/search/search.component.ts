@@ -66,7 +66,7 @@ export class SearchComponent {
               if(this.search!==""){
                 this.dataService.searchProfiles(this.search).subscribe(
                   data => {
-                      this.response = JSON.parse(data._body);
+                      this.response = data;
                       this.setResultMode(this.resultMode);
                   },
                   error => console.log(error),
@@ -82,25 +82,21 @@ export class SearchComponent {
 
     first(){
        this.currentPage = 1;
-       console.log(this.currentPage);
        this.loadPageData();
     }
 
     previous(){
        this.currentPage = this.currentPage - 1;
-       console.log(this.currentPage);
        this.loadPageData();
     }
 
     next(){
        this.currentPage = this.currentPage + 1;
-       console.log(this.currentPage);
        this.loadPageData();
     }
 
     last(){
        this.currentPage = this.totalPages;
-       console.log(this.currentPage);
        this.loadPageData();
     }
 

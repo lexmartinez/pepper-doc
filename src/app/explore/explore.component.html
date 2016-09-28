@@ -1,0 +1,26 @@
+<div class="ui container middle aligned stackable">
+
+  <div class="ui link cards" >
+  <div class="card" *ngFor="let app of results">
+    <div class="content">
+      <div class="header">
+        <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
+      </div>
+      <div class="meta">
+        <a [routerLink]="['/docs',app.owner]">{{app.owner}}</a>
+      </div>
+      <div class="description">
+        {{app.description}}
+      </div>
+    </div>
+    <div class="extra content">
+      <span>
+        <i class="fa fa-flask" *ngIf="app.html_url"></i>
+              {{app.html_url}}
+      </span>
+    </div>
+  </div>
+</div>
+
+
+</div>

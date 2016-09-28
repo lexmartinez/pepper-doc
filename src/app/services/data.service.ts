@@ -12,10 +12,14 @@ export class DataService {
   constructor(private http: Http) { }
 
   searchProfiles(search){
-    return this.http.get('/api/search/'+search, this.options );
+    return this.http.get('/api/search/'+search, this.options ).map(res => res.json());
   }
 
-  getCats() {
+  exploreApps(size){
+    return this.http.get('/api/apps/explore/'+size, this.options ).map(res => res.json());
+  }
+
+  /*getCats() {
     return this.http.get('/profiles').map(res => res.json());
   }
 
@@ -29,6 +33,6 @@ export class DataService {
 
   deleteCat(cat) {
     return this.http.delete(`/profiles/${cat._id}`, this.options);
-  }
+  }]*/
 
 }

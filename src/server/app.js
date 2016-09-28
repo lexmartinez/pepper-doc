@@ -46,6 +46,15 @@ db.once('open', function() {
     })
   });
 
+  //explore
+
+  app.get('/api/apps/explore/:size', function(req, res) {
+    AppModel.aggregate({$sample:{size:Number(req.params.size)}}, function(err, docs) {
+      if(err) return console.error(err);
+      res.json(docs);
+    });
+  });
+
   // select all
   app.get('/profiles', function(req, res) {
     Profile.find({}, function(err, docs) {
