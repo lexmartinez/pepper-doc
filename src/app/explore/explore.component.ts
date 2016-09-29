@@ -4,7 +4,7 @@ import { DataService } from '../services/data.service';
 import { Http } from '@angular/http';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-explore',
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.css']
 })

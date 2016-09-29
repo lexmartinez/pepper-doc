@@ -55,6 +55,19 @@ db.once('open', function() {
     });
   });
 
+  // find by login
+  app.get('/api/profiles/:login', function(req, res) {
+    Profile.findOne({"login": req.params.login}, function(err, obj) {
+      if(err) return console.error(err);
+
+      AppModel.find({owner:req.params.login}, function(err2, obj2) {
+        if(err2) return console.error(err2);
+        var profile = {"profile":obj, "apps":obj2};
+        res.json(profile);
+      })
+  });
+});
+
   // select all
   app.get('/profiles', function(req, res) {
     Profile.find({}, function(err, docs) {
@@ -78,14 +91,6 @@ db.once('open', function() {
       if(err) return console.error(err);
       res.status(200).json(obj);
     });
-  });
-
-  // find by id
-  app.get('/profiles/:id', function(req, res) {
-    Profile.findOne({_id: req.params.id}, function(err, obj) {
-      if(err) return console.error(err);
-      res.json(obj);
-    })
   });
 
   // update by id

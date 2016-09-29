@@ -19,6 +19,10 @@ export class DataService {
     return this.http.get('/api/apps/explore/'+size, this.options ).map(res => res.json());
   }
 
+  getProfile(login){
+    return this.http.get('/api/profiles/'+login, this.options ).map(res => res.json());
+  }
+
   /*getCats() {
     return this.http.get('/profiles').map(res => res.json());
   }

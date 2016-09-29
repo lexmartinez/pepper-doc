@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { ExploreComponent } from './explore/explore.component';
+import { ProfileComponent } from './profile/profile.component';
 import { DataService } from './services/data.service';
 import { OAuthService } from './services/oauth.service';
 
@@ -17,6 +18,7 @@ const routing = RouterModule.forRoot([
     { path: '',  redirectTo: 'search', pathMatch: 'full' },
     { path: 'about', component: AboutComponent },
     { path: 'docs', component: ExploreComponent },
+    { path: 'docs/:profile', component: ProfileComponent },
     { path: 'search', component: SearchComponent },
     { path: 'search/:search', component: SearchComponent }
 ]);
@@ -26,7 +28,8 @@ const routing = RouterModule.forRoot([
     AppComponent,
     AboutComponent,
     SearchComponent,
-    ExploreComponent
+    ExploreComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

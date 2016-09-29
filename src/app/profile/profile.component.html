@@ -1,0 +1,65 @@
+{{data}}
+<!--<div class="ui container middle aligned stackable">
+  <br/>
+
+  <div class="ui grid">
+    <div class="four wide column">
+
+      <div class="ui card">
+        <div class="image">
+          <img src="{{data.profile.avatar_url}}">
+        </div>
+        <div class="content">
+          <a class="header">{{data.profile.name}}</a>
+          <div class="description">
+            {{data.profile.html_url}}
+          </div>
+        </div>
+        <div class="extra content">
+          <a>
+            <i class="fa fa-cube"></i>
+            {{data.apps.length}} Apps
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="twelve wide column">
+      <div>
+        <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let app of data.apps">
+          <h3 class="ui header">
+            <img src="assets/app.png" class="ui image">
+            <div class="content">
+              <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
+              <div class="sub header">{{app.description}}<br *ngIf="app.html_url"/>
+                <i class="fa fa-flask" *ngIf="app.html_url"></i>
+                {{app.html_url}}
+              </div>
+            </div>
+          </h3>
+        </div>
+      </div>
+      <br/>
+      <!--<div class="ui center aligned container" *ngIf="list.length > 10">
+      <div class="ui pagination menu">
+      <a class="item" [class.disabled]="currentPage == 1" (click)="first()">
+      <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+    </a>
+    <a class="item" [class.disabled]="currentPage == 1" (click)="previous()">
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+  </a>
+  <div class="item">
+  {{currentPage}} OF {{totalPages}}
+</div>
+<a class="item" [class.disabled]="currentPage == totalPages" (click)="next()">
+<i class="fa fa-angle-right" aria-hidden="true"></i>
+</a>
+<a class="item" [class.disabled]="currentPage == totalPages" (click)="last()">
+<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>-->
