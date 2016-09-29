@@ -37,7 +37,7 @@
         <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let app of listApps">
           <h3 class="ui header">
             <div class="content">
-              <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
+              <a class="result-name" [routerLink]="['/docs', app.owner,  app.id]">{{app.name}}</a>
               <div class="sub header">{{app.description}}<br *ngIf="app.html_url"/>
                 <i class="fa fa-flask" *ngIf="app.html_url"></i>
                 {{app.html_url}}

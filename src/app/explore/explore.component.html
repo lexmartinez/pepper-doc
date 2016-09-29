@@ -6,7 +6,7 @@
   <div class="card" *ngFor="let app of results">
     <div class="content">
       <div class="header">
-        <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
+        <a class="result-name" [routerLink]="['/docs', app.owner, app.id]">{{app.name}}</a>
       </div>
       <div class="meta">
         <a [routerLink]="['/docs',app.owner]">{{app.owner}}</a>

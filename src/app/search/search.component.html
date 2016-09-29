@@ -26,7 +26,7 @@
         <h3 class="ui header">
           <img src="{{user.avatar_url}}" class="ui circular image">
           <div class="content">
-            <a class="result-name" [routerLink]="['/docs',user.login]">{{user.name}}</a>
+            <a class="result-name" [routerLink]="['/docs', user.login]">{{user.name}}</a>
              <div class="sub header">@{{user.login}}<br/>
                 <i class="github alternate icon"></i>
                 {{user.html_url}}
@@ -41,7 +41,7 @@
         <h3 class="ui header">
           <img src="assets/app.png" class="ui image">
           <div class="content">
-            <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
+            <a class="result-name" [routerLink]="['/docs', app.owner, app.id]">{{app.name}}</a>
              <div class="sub header">{{app.description}}<br *ngIf="app.html_url"/>
                 <i class="fa fa-flask" *ngIf="app.html_url"></i>
                       {{app.html_url}}
