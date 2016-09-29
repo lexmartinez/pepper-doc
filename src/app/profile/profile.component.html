@@ -15,6 +15,9 @@
           </div>
         </div>
         <div class="extra content">
+          <span class="right floated">
+              @{{data.profile.login}}
+          </span>
           <a>
             <i class="fa fa-cube"></i>
             {{data.apps.length}} Apps
@@ -26,14 +29,13 @@
     <div class="twelve wide column">
       <div class="search item ui fluid" style="width:100%">
         <div class="ui icon input" style="width:100%">
-          <input type="text" #search placeholder="Search apps...">
+          <input type="text" #search placeholder="Search apps..." (keyup)="filterApps(search.value)">
           <i class="search link icon"></i>
         </div>
       </div>
       <div>
-        <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let app of data.apps">
+        <div class="ui stacked segment" style="margin-top:10px"  *ngFor="let app of listApps">
           <h3 class="ui header">
-          <!--  <img src="assets/app.png" class="ui image">-->
             <div class="content">
               <a class="result-name" [routerLink]="['/docs',{profile: app.owner, app: app.id}]">{{app.name}}</a>
               <div class="sub header">{{app.description}}<br *ngIf="app.html_url"/>

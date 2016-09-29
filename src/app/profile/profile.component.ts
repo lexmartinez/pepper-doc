@@ -13,6 +13,7 @@ export class ProfileComponent {
   private data = {};
   private profile = "";
   private isLoading = false;
+  private listApps = [];
 
   constructor(private http: Http,
               private dataService: DataService, private route:ActivatedRoute, private router:Router) { }
@@ -27,6 +28,7 @@ export class ProfileComponent {
                   this.dataService.getProfile(this.profile).subscribe(
                         data => {
                             this.data = data;
+                            this.listApps = data.apps;
                         },
                         error => console.log(error),
                         () => this.isLoading = false
@@ -34,6 +36,20 @@ export class ProfileComponent {
               }
             }
         });
+  }
+
+  filterApps(search) {
+      this.listApps = [];
+      if(search && search!=""){
+        var pattern = new RegExp('.*'+search+'.*', "i");
+        for(var i=0;i<this.data.apps.length;i++){
+           if(pattern.test(this.data.apps[i].name)){
+              this.listApps.push(this.data.apps[i]);
+           }
+        }
+      }else{
+        this.listApps = this.data.apps;
+      }
   }
 
 
