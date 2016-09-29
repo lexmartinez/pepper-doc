@@ -27,16 +27,14 @@ export class ProfileComponent {
                   this.dataService.getProfile(this.profile).subscribe(
                         data => {
                             this.data = data;
-                            console.log(this.data);
                         },
                         error => console.log(error),
                         () => this.isLoading = false
                   );
               }
-            }else{
-                this.isLoading = false;
-                this.data = undefined;
             }
         });
   }
+
+
 }
