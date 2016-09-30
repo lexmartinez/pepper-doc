@@ -10,7 +10,7 @@ import { Http } from '@angular/http';
 })
 export class ProfileComponent {
 
-  private data = {};
+  private data = {apps:[],profile:{}};
   private profile = "";
   private isLoading = false;
   private listApps = [];
