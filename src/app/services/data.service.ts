@@ -23,6 +23,10 @@ export class DataService {
     return this.http.get('/api/profiles/'+login, this.options ).map(res => res.json());
   }
 
+  getApp(id, owner){
+    return this.http.get('/api/apps/'+owner+'/'+id, this.options ).map(res => res.json());
+  }
+
   /*getCats() {
     return this.http.get('/profiles').map(res => res.json());
   }

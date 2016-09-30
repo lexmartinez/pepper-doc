@@ -21,7 +21,13 @@ const routing = RouterModule.forRoot([
     { path: 'about', component: AboutComponent },
     { path: 'docs', component: ExploreComponent },
     { path: 'docs/:profile', component: ProfileComponent },
-    { path: 'docs/:profile/:app', component: ApplicationComponent },
+    { path: 'docs/:profile/:app', component: ApplicationComponent},/*,
+      children: [
+        { path: '', redirectTo: 'child-one', pathMatch: 'full' },
+        { path: 'child-one', component: ExploreComponent },
+        { path: 'child-two', component: AboutComponent }
+      ]
+    },*/
     { path: 'search', component: SearchComponent },
     { path: 'search/:search', component: SearchComponent }
 ]);

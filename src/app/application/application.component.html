@@ -1,1 +1,37 @@
-{{profile}}-{{app}}
+
+<div class="ui grid">
+  <div class="three wide column">
+    <div class="ui left vertical menu secondary vertical pointing">
+      <div class="search item ui fluid">
+        <div class="ui icon input">
+          <input type="text" #search placeholder="Filter services..." (keyup)="filterServices(search.value)">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <a class="item" (click)="setCurrent('pepper-doc-intro')" [class.active]="current == 'pepper-doc-intro'">Introduction</a>
+      <div *ngFor="let service of services">
+      <div class="header item">{{service.name}}</div>
+      <a class="item"  *ngFor="let operation of service.operations"  (click)="setCurrent(operation.name)" [class.active]="current == operation.name">{{operation.name}}
+        <div class="ui left pointing label"
+             [class.green]="operation.method == 'GET'"
+             [class.red]="operation.method == 'DELETE'"
+             [class.grey]="operation.method == 'PUT'"
+             [class.blue]="operation.method == 'POST'"
+        >{{operation.method}}</div></a>
+     </div>
+    </div>
+  </div>
+  <div class="twelve wide column">
+    <div *ngIf="data" class="ui container" style="padding-top:10px;">
+      <div class="ui header huge">{{data.name}}
+        <div class="sub header">{{data.description}}</div>
+      </div>
+      <div class="ui horizontal divider"> </div>
+      <div *ngIf="current == 'pepper-doc-intro'">
+            INTRO
+      </div>
+
+    </div>
+  </div>
+  <div class="one column"></div>
+</div>

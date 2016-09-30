@@ -32,12 +32,12 @@ db.once('open', function() {
   // search
   app.get('/api/search/:key', function(req, res) {
     Profile.find({$or: [{name: new RegExp('.*'+req.params.key+'.*', "i")},
-            {login: new RegExp('.*'+req.params.key+'.*', "i")}]}, function(err, obj) {
+    {login: new RegExp('.*'+req.params.key+'.*', "i")}]}, function(err, obj) {
       if(err) return console.error(err);
 
       AppModel.find({$or: [{name: new RegExp('.*'+req.params.key+'.*', "i")},
-              {description: new RegExp('.*'+req.params.key+'.*', "i")}]}
-              , function(err2, obj2) {
+      {description: new RegExp('.*'+req.params.key+'.*', "i")}]}
+      , function(err2, obj2) {
         if(err2) return console.error(err2);
 
         var all = {"users":obj, "apps":obj2};
@@ -65,8 +65,16 @@ db.once('open', function() {
         var profile = {"profile":obj, "apps":obj2};
         res.json(profile);
       })
+    });
   });
-});
+
+  //get App by id
+  app.get('/api/apps/:profile/:id', function(req, res) {
+    AppModel.findOne({id:req.params.id, owner:req.params.profile}, function(err, obj) {
+      if(err) return console.error(err);
+      res.json(obj);
+    });
+  });
 
   // select all
   app.get('/profiles', function(req, res) {
