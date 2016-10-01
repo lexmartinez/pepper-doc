@@ -10,28 +10,71 @@
       </div>
       <a class="item" (click)="setCurrent('pepper-doc-intro')" [class.active]="current == 'pepper-doc-intro'">Introduction</a>
       <div *ngFor="let service of services">
-      <div class="header item">{{service.name}}</div>
-      <a class="item"  *ngFor="let operation of service.operations"  (click)="setCurrent(operation.name)" [class.active]="current == operation.name">{{operation.name}}
-        <div class="ui left pointing label"
-             [class.green]="operation.method == 'GET'"
-             [class.red]="operation.method == 'DELETE'"
-             [class.grey]="operation.method == 'PUT'"
-             [class.blue]="operation.method == 'POST'"
-        >{{operation.method}}</div></a>
-     </div>
+        <div class="header item">{{service.name}}</div>
+        <a class="item"  *ngFor="let operation of service.operations"  (click)="setCurrent(operation.name)" [class.active]="current == operation.name">{{operation.name}}
+          <div class="ui left pointing label"
+          [class.green]="operation.method == 'GET'"
+          [class.red]="operation.method == 'DELETE'"
+          [class.grey]="operation.method == 'PUT'"
+          [class.blue]="operation.method == 'POST'"
+          >{{operation.method}}</div></a>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="twelve wide column">
-    <div *ngIf="data" class="ui container" style="padding-top:10px;">
-      <div class="ui header huge">{{data.name}}
-        <div class="sub header">{{data.description}}</div>
-      </div>
-      <div class="ui horizontal divider"> </div>
-      <div *ngIf="current == 'pepper-doc-intro'">
-            INTRO
-      </div>
+    <div class="twelve wide column">
+      <div *ngIf="data" class="ui container">
+        <div class="ui horizontal divider"> </div>
+        <div class="ui header huge">{{data.name}}
+          <div class="sub header">{{data.description}}</div>
+        </div>
 
+        <div *ngIf="current == 'pepper-doc-intro'" class="ui piled segment" [innerHTML]="data.introduction"></div>
+        <div class="ui horizontal divider"> </div>
+        <div *ngFor="let service of services">
+          <div  *ngFor="let operation of service.operations">
+            <div  *ngIf="current == operation.name" class="ui piled segment">
+              <a class="ui ribbon label" [class.green]="operation.method == 'GET'"
+              [class.red]="operation.method == 'DELETE'"
+              [class.grey]="operation.method == 'PUT'"
+              [class.blue]="operation.method == 'POST'">{{operation.method}}</a>
+
+              <h3 class="ui header">
+                <i class="fa fa-code fa-2x"></i>&nbsp;&nbsp;
+                <div class="content">
+                  {{service.name}} / {{operation.name}}
+                  <div class="sub header">{{operation.url}}</div>
+                </div>
+              </h3>
+
+              <div class="ui horizontal divider"> </div>
+              <div class="ui pointing secondary menu">
+                <a class="item" [class.active]="tab == 'reference'" (click)="setTab('reference')">Reference</a>
+                <a class="item" [class.active]="tab == 'notes'" (click)="setTab('notes')">Notes</a>
+                <a class="item" [class.active]="tab == 'test'" (click)="setTab('test')">Test</a>
+              </div>
+              <div class="ui segment basic" *ngIf="tab == 'reference'">
+                data
+              </div>
+              <div class="ui segment basic" *ngIf="tab == 'notes'">
+                <table class="ui celled table" *ngIf="operation.notes && operation.notes.length">
+                  <tbody>
+                    <tr *ngFor="let note of operation.notes">
+                      <td>{{note}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="ui message" *ngIf="!operation.notes || !operation.notes.length">
+                <p>Operation without notes!</p>
+                </div>
+              </div>
+              <div class="ui segment basic" *ngIf="tab == 'test'">
+                test
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="one column"></div>
   </div>
-  <div class="one column"></div>
-</div>

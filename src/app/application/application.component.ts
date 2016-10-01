@@ -14,6 +14,8 @@ export class ApplicationComponent {
   private data = {"services":[]};
   private current = "pepper-doc-intro";
   private services = [];
+  private tab = "reference";
+
   constructor(private route:ActivatedRoute, private router:Router,   private dataService: DataService) {
 
     this.route.params.subscribe(params => {
@@ -37,6 +39,11 @@ export class ApplicationComponent {
 
   setCurrent(value){
     this.current = value;
+    this.tab = "reference";
+  }
+
+  setTab(value){
+    this.tab = value;
   }
 
   filterServices(search) {

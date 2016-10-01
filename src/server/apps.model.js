@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var operationSchema = mongoose.Schema({
   name: String,
   url: String,
-  method: String
+  method: String,
+  notes: [String]
 });
 
 var serviceSchema = mongoose.Schema({
@@ -17,6 +18,7 @@ var appSchema = mongoose.Schema({
     description: String,
     key: String,
     html_url: String,
+    introduction: String,
     services: [serviceSchema]
 });
 
