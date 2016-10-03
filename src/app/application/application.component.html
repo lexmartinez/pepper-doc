@@ -50,10 +50,40 @@
               <div class="ui pointing secondary menu">
                 <a class="item" [class.active]="tab == 'reference'" (click)="setTab('reference')">Reference</a>
                 <a class="item" [class.active]="tab == 'notes'" (click)="setTab('notes')">Notes</a>
-                <a class="item" [class.active]="tab == 'test'" (click)="setTab('test')">Test</a>
+              <!--  <a class="item" [class.active]="tab == 'test'" (click)="setTab('test')">Test</a>-->
               </div>
               <div class="ui segment basic" *ngIf="tab == 'reference'">
-                data
+                <h4 *ngIf="operation.params && operation.params.length">Parameters</h4>
+                <table class="ui celled table" *ngIf="operation.params && operation.params.length">
+                  <thead>
+                      <tr>
+                          <th>Parameter</th>
+                          <th>Type</th>
+                          <th>Description</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let param of operation.params">
+                      <td>{{param.name}}</td>
+                      <td>{{param.type}}</td>
+                      <td>{{param.description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h4 *ngIf="operation.responses && operation.responses.length">Responses</h4>
+                <table class="ui celled table" *ngIf="operation.responses && operation.responses.length">
+                  <thead>
+                      <tr>
+                          <th>Code</th>
+                          <th>Body Prototype</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let response of operation.responses">
+                      <td><b>{{response.code}}</b></td>
+                      <td><div [innerHTML]="response.body | prettyprint"></div></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <div class="ui segment basic" *ngIf="tab == 'notes'">
                 <table class="ui celled table" *ngIf="operation.notes && operation.notes.length">
@@ -67,9 +97,9 @@
                 <p>Operation without notes!</p>
                 </div>
               </div>
-              <div class="ui segment basic" *ngIf="tab == 'test'">
+              <!--<div class="ui segment basic" *ngIf="tab == 'test'">
                 test
-              </div>
+              </div>-->
 
             </div>
           </div>

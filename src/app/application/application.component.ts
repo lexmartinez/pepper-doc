@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { DataService } from '../services/data.service';
+
+
+@Pipe({
+  name: 'prettyprint'
+})
+export class PrettyPrintPipe {
+  transform(val) {
+    var obj = JSON.parse(val);
+    return JSON.stringify(obj, null, 2)
+      .replace(/ /g, '&nbsp;')
+      .replace(/\n/g, '<br/>');
+  }
+}
 
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
-  styleUrls: ['./application.component.css']
+  styleUrls: ['./application.component.css'],
+  pipes: [ PrettyPrintPipe ]
 })
 export class ApplicationComponent {
 

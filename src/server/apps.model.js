@@ -1,10 +1,23 @@
 var mongoose = require('mongoose');
 
+var responseSchema = mongoose.Schema({
+  code: String,
+  body: String
+});
+
+var paramSchema = mongoose.Schema({
+  name: String,
+  type: String,
+  description: String
+});
+
 var operationSchema = mongoose.Schema({
   name: String,
   url: String,
   method: String,
-  notes: [String]
+  notes: [String],
+  params: [paramSchema],
+  responses: [responseSchema]
 });
 
 var serviceSchema = mongoose.Schema({

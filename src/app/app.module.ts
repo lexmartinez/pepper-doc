@@ -9,7 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { ExploreComponent } from './explore/explore.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ApplicationComponent } from './application/application.component';
+import { ApplicationComponent, PrettyPrintPipe } from './application/application.component';
 
 import { DataService } from './services/data.service';
 import { OAuthService } from './services/oauth.service';
@@ -39,7 +39,8 @@ const routing = RouterModule.forRoot([
     SearchComponent,
     ExploreComponent,
     ProfileComponent,
-    ApplicationComponent
+    ApplicationComponent,
+    PrettyPrintPipe
   ],
   imports: [
     BrowserModule,
