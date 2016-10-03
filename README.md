@@ -23,4 +23,16 @@ With `nodeJS` environment installed, use this commands to run `pepper-doc`
 
 And voil&#224; `pepper-doc` now should be running on [http://localhost:3000/](http://localhost:3000/)
 
+![](https://raw.githubusercontent.com/lexmartinez/pepper-doc/master/snapshots/snapshot1.png)
+
+![](https://raw.githubusercontent.com/lexmartinez/pepper-doc/master/snapshots/snapshot2.png)
+
+![](https://raw.githubusercontent.com/lexmartinez/pepper-doc/master/snapshots/snapshot3.png)
+
+![](https://raw.githubusercontent.com/lexmartinez/pepper-doc/master/snapshots/snapshot4.png)
+
+![](https://raw.githubusercontent.com/lexmartinez/pepper-doc/master/snapshots/snapshot5.png)
+
 > based on [DavideViolante/Angular2-Full-Stack](https://github.com/DavideViolante/Angular2-Full-Stack) MEAN Stack project
+
+And voil&#224; `pepper-doc` now should be running on
