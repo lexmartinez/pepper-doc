@@ -34,5 +34,3 @@ And voil&#224; `pepper-doc` now should be running on [http://localhost:3000/](ht
 ![](https://raw.githubusercontent.com/lexmartinez/pepper-doc/master/snapshots/snapshot5.png)
 
 > based on [DavideViolante/Angular2-Full-Stack](https://github.com/DavideViolante/Angular2-Full-Stack) MEAN Stack project
-
-And voil&#224; `pepper-doc` now should be running on
