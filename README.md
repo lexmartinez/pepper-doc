@@ -1,7 +1,5 @@
 # pepper-doc
-REST API Documentation Platform, built on Angular 2 & Semantic UI
-
-#####Project Keywords: `MongoDB` `Express` `Angular 2` `TypeScript` `Semantic UI` `Angular CLI`
+:turtle: REST API Documentation Platform, built on Angular 2 & Semantic UI
 
 ## Project Setup
 
